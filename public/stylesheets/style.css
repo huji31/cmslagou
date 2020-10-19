@@ -1,0 +1,26 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #dddddd;
+}
+ul,li{
+  list-style: none;
+}
+a {
+  color: #00B7FF;
+}
+
+#login{
+  background-color: #ffffff;
+  width: 400px;
+  margin: 60px auto;
+}
+
+#register{
+  background-color: #ffffff;
+  width: 400px;
+  margin: 60px auto;
+}

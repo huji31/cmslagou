@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('templates/file') %>
+</head>
+<body>
+    <div id="login" class="border border-secondary rounded p-5">
+    <form id="loginForm" action="/users/login" method="POST">
+        <div class="form-group">
+          <label for="exampleInputEmail1">用户名</label>
+          <input id="username" type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="用户名" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">密码</label>
+          <input id="password" type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="密码" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="">验证码</label>
+          <input type="text" name="yzm" class="form-control" placeholder="请输入验证码" autocomplete="off">
+          <img id="yzmImg" src="/users/yzm" alt="">
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> 遵守用户协议
+          </label>
+        </div>
+        <button type="submit" class="btn btn-info mt-2">登录</button>
+        <a href="/register" class="float-right mt-3">注册账号？</a>
+      </form>
+    </div>
+    <script>
+        var $username = $('#username');
+        var $password = $('#password');
+        $('#loginForm').submit(function(){
+            if(!$username.val() || !$password.val()){
+                alert('输入框不能为空');
+                return false;
+            }
+        });
+        $('#yzmImg').click(function(){
+          //点击切换验证码，在页面中有缓存，加个随机数改变地址，取消缓存
+          $(this).attr('src','/users/yzm?'+Math.random());
+        })
+    </script>
+</body>
+</html>

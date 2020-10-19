@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('templates/file') %>
+</head>
+<body>
+    <div id="register" class="border border-secondary rounded p-5">
+        <!-- 表单中添加请求方式，注册接口 -->
+        <form id="registerForm" method="POST" action="/users/register">
+            <div class="form-group">
+              <label for="exampleInputEmail1">用户名</label>
+              <input id="username" name="username" type="text" class="form-control" id="exampleInputEmail1" placeholder="用户名" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">密码</label>
+              <input id="password" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="密码" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">确认密码</label>
+                <input id="password2" name="password2" type="password" class="form-control" id="exampleInputPassword1" placeholder="确认密码" autocomplete="off">
+              </div>
+            <button type="submit" class="btn btn-info mt-2">注册</button>
+            <a href="/login" class="float-right mt-3">已有账号</a>
+          </form>
+        </div>
+
+        <script>
+            var $username = $('#username');
+            var $password = $('#password');
+            var $password2 = $('#password2');
+
+            /* 传输数据，控制层进行接受 */
+            $('#registerForm').submit(function(){
+                if(!$username.val() || !$password.val()){
+                    alert('输入框不能为空');
+                    /* 有问题则停止提交 */
+                    return false;
+                }else if($password.val() != $password2.val()){
+                    alert('密码不一致');
+                    return false;
+                }
+            })
+        </script>
+</body>
+</html>
